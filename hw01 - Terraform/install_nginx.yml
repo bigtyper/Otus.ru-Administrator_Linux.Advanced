@@ -1,0 +1,8 @@
+- name: test work
+  hosts: myvm01
+  connection: ssh
+  become: true
+
+  tasks:
+    - name: Установка ПО
+      command: apt install -y nginx
