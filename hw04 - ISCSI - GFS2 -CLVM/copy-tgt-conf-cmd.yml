@@ -1,0 +1,12 @@
+---
+- name:
+  hosts: mynodes
+  tasks:
+    - name: Копирование файла конфигурации службы сервера iSCSI
+      ansible.builtin.copy:
+         src: /etc/ansible/tgt-conf/
+         dest: /etc/tgt/conf.d/
+         follow: yes
+    - name: Рестарт службы сервера iSCIS
+      ansible.builtin.command:
+         cmd: service tgt restart
