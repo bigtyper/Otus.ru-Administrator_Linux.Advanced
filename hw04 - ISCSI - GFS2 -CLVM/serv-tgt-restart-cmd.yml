@@ -1,0 +1,7 @@
+---
+- name:
+  hosts: mynodes
+  tasks:
+    - name: Рестарт службы сервера iSCIS
+      ansible.builtin.command:
+         cmd: service tgt restart
