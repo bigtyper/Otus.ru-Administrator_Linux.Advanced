@@ -10,7 +10,8 @@ ISCSI, multipath и кластерные файловые системы: GFS2</
 
 <h3></h3>
 <hr>
-<p>Vagrantfile — управляющая машина ansible на ubuntu2210 <p>
+<p></p>
+<p>Vagrantfile — ansible ubuntu2210 создание управляющей машины на ubuntu2210</p>
 <p>apt-upd-all.yml -  плейбук обновления на виртуальных машинах<p>
 <p>apt-inst-tgt.yml - плейбук установки службы tgt на виртуальных машинах </p>
 <p>copy-tgt-conf-cmd.yml - плейбук копирования файла конфигурации с рестартом службы tgt</p>
