@@ -1,0 +1,7 @@
+- name:
+  hosts: mynodes
+  tasks:
+
+    - name: create file images
+      ansible.builtin.command:
+         cmd: dd if=/dev/zero of=/var/opt/file1G.img bs=1M count=1024
