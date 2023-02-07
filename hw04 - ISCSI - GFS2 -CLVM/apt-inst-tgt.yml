@@ -1,0 +1,7 @@
+---
+- hosts: mynodes
+  tasks:
+    - name: install tgt (iSCSC server)
+      apt:
+       name: tgt, targetcli-fb
+       state: present
