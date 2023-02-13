@@ -1,0 +1,16 @@
+- name: Create LXC container
+  hosts: myvm01
+
+  tasks:
+    - name: Создание контейнеров со своими параметрами
+      community.general.lxc_container:
+       name: "{{item.lxc_hostname}}"
+       container_log: true
+       template: ubuntu
+       state: started
+       template_options: --release jammy
+       config: "{{item.lxc_file_config}}"
+      loop:
+        - { lxc_hostname: ubu01 , lxc_file_config: /etc/ansible/lxc-ubu01.conf }
+        - { lxc_hostname: ubu02 , lxc_file_config: /etc/ansible/lxc-ubu02.conf }
+        - { lxc_hostname: ubu03 , lxc_file_config: /etc/ansible/lxc-ubu03.conf }
