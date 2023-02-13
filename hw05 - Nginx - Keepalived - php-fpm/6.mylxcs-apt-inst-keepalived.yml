@@ -1,0 +1,11 @@
+---
+- hosts: mylxcs
+  tasks:
+    - name: install keepalived nginx php...
+      apt:
+       name:
+        - keepalived
+        - nginx
+        - php-fpm
+        - php-mysql
+       state: present
