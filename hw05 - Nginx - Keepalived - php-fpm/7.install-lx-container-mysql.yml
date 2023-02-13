@@ -1,0 +1,13 @@
+---
+- hosts: mylxc04
+  tasks:
+    - name: install mysql-server and over
+      apt:
+       name:
+        - mysql-server
+        - python3-lxc
+        - python3-pymysql
+        - mc
+        - vim
+       state: present
+       
