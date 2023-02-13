@@ -1,0 +1,14 @@
+---
+- hosts: myvm01
+  tasks:
+    - name: install OpenVPN
+      apt:
+       name:
+        - openvpn
+        - easy-rsa
+       state: present
+
+       name: create file images
+       ansible.builtin.command:
+         cmd: mkdir /etc/openvpn/easy-rsa
+         cmd: cp -R /usr/share/easy-rsa /etc/openvpn/
