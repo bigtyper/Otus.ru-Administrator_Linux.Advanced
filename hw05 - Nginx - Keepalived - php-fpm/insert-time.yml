@@ -1,0 +1,15 @@
+
+---
+- hosts: mylxc04
+  gather_facts: no
+  tasks:
+
+  - name: Run several insert queries against db test_db in single transaction
+    community.mysql.mysql_query:
+      login_db: mybase
+      login_user: my_user
+      login_password: my_pass
+
+      query:
+      - INSERT Time (time)  VALUES (NOW());
+      single_transaction: yes
