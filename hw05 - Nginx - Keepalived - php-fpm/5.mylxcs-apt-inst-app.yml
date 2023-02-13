@@ -1,0 +1,11 @@
+---
+- hosts: mylxcs
+  tasks:
+    - name: install mc vim and over
+      apt:
+       name:
+        - mc
+        - vim
+        - python3-lxc
+       state: present
+       
