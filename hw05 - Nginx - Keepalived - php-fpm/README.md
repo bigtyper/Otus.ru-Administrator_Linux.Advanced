@@ -18,7 +18,7 @@ Nginx - балансировка и отказоустойчивость</h3>
 <ul>
 <h4>Краткое описание вложенных файлов:</h4>
 <li><p>1.myubu2210vms-apt-install-update.yml Обновление перед началом процесса установки ролей и служб</p></li>
-<li><p>2.myubu2210-apt-install-nfs-etc.yml Установка серверной части ПО/p></li>
+<li><p>2.myubu2210-apt-install-nfs-etc.yml Установка серверной части ПО</p></li>
 <li><p>3.myubu2210-apt-install-nfc-etc.yml Установка клиентской части ПО</p></li>
 <li><p>4.myubu2210vms-start-ufw.yml Старт фаирвола</p></li>
 <li><p>5.myubu2210vms-customization-nfs.yml Настройка серверной части ПО</p></li>
