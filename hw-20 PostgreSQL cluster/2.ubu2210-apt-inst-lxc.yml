@@ -1,0 +1,13 @@
+---
+- hosts: main-srv
+  tasks:
+    - name: install lxc and over
+      apt:
+       name: 
+        - lxc
+        - lxctl
+        - lxc-templates
+        - bridge-utils
+        - python3-lxc	 
+       state: present
+

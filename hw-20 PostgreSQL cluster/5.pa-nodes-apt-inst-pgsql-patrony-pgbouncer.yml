@@ -1,0 +1,13 @@
+---
+- hosts: patroninodes
+  tasks:
+    - name: install postgresql14 patroni pgbouncer and over
+      apt:
+       name: 
+        - postgresql-14
+        - patroni
+        - pgbouncer
+        - vim
+        - mc
+       state: present
+

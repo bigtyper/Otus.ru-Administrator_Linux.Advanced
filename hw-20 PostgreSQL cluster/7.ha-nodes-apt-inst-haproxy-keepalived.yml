@@ -1,0 +1,10 @@
+---
+- hosts: hakenodes
+  tasks:
+    - name: install haproxy keepalived
+      apt:
+       name: 
+        - haproxy
+        - keepalived
+       state: present
+

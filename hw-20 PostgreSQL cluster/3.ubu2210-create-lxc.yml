@@ -1,0 +1,24 @@
+- name: Create LXC container
+  hosts: main-srv
+
+  tasks:
+    - name: Создание контейнеров со своими параметрами
+      community.general.lxc_container:
+       name: "{{item.lxc_hostname}}"
+       container_log: true
+       template: ubuntu
+       state: started
+       template_options: --release kinetic
+       config: "{{item.lxc_file_config}}"
+      loop:
+        - { lxc_hostname: pa-node01 , lxc_file_config: /etc/ansible/lxc-ubu01.conf }
+        - { lxc_hostname: pa-node02 , lxc_file_config: /etc/ansible/lxc-ubu02.conf }
+        - { lxc_hostname: pa-node03 , lxc_file_config: /etc/ansible/lxc-ubu03.conf }  
+        - { lxc_hostname: et-node01 , lxc_file_config: /etc/ansible/lxc-ubu04.conf }
+        - { lxc_hostname: et-node02 , lxc_file_config: /etc/ansible/lxc-ubu05.conf }
+        - { lxc_hostname: et-node03 , lxc_file_config: /etc/ansible/lxc-ubu06.conf } 
+        - { lxc_hostname: ha-node01 , lxc_file_config: /etc/ansible/lxc-ubu07.conf }
+        - { lxc_hostname: ha-node02 , lxc_file_config: /etc/ansible/lxc-ubu08.conf }
+        - { lxc_hostname: ke-node01 , lxc_file_config: /etc/ansible/lxc-ubu09.conf }
+        - { lxc_hostname: ke-node02 , lxc_file_config: /etc/ansible/lxc-ubu10.conf }
+

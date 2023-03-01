@@ -1,0 +1,9 @@
+---
+- hosts: etcsnodes
+  tasks:
+    - name: install etcd
+      apt:
+       name: 
+        - etcd
+       state: present
+
