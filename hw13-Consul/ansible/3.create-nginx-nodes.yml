@@ -1,0 +1,6 @@
+---
+- name: creates_consul_nodes
+  hosts: consulnodes
+  roles:
+    - create_nginx_nodes
+
