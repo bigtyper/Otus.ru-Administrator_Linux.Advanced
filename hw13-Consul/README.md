@@ -18,7 +18,7 @@ Consul</h3>
 <ul>
 <h4>Краткое описание вложенных файлов:</h4>
 <li><p>vagrantfiles/consulVagrantfile - Здесь находятся vagrant файлы конфигурации host машин</p></li>
-<li><p></p></li>
+<li><p>ansible - здесь лежат конфигурационные файлы ansible для развертывания consul нод</p></li>
 <li><p></p></li>
 <li><p></p></li>
 <li><p></p></li>
