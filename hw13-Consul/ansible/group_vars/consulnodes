@@ -1,0 +1,11 @@
+ansible_connection           : ssh
+ansible_ssh_port             : 22
+ansible_user                 : ubuntu
+#ansible_ssh_pass             : ubuntu
+#ansible_sudo_user            : ubuntu
+#ansible_become_user          : ubuntu
+ansible_become_method        : sudo
+ansible_become               : yes
+#ansible_become_ask_pass      : false
+ansible_ssh_common_args      : '-o StrictHostKeyChecking=no'
+ansible_ssh_private_key_file : /home/vagrant/.ssh/id_rsa
