@@ -19,11 +19,11 @@ Consul</h3>
 <h4>Краткое описание вложенных файлов:</h4>
 <li><p>vagrantfiles/consulVagrantfile - Здесь находятся vagrant файлы конфигурации host машин</p></li>
 <li><p>ansible - здесь лежат конфигурационные файлы ansible для развертывания consul нод</p></li>
-<li><p></p></li>
-<li><p></p></li>
-<li><p></p></li>
-<li><p><p></li>
-
+<li><p>[![2023-03-11-09-52-24.png](https://i.postimg.cc/mDT1483R/2023-03-11-09-52-24.png)](https://postimg.cc/FfnHgbnn) - Три ноды consul</p></li>
+<li><p>[![2023-03-11-10-09-01.png](https://i.postimg.cc/3wX0zPvn/2023-03-11-10-09-01.png)](https://postimg.cc/5HttCKpC) - Три lxc контейнера для нод consul</p></li>
+<li><p>[![2023-03-11-10-12-02.png](https://i.postimg.cc/C51ZB56Q/2023-03-11-10-12-02.png)](https://postimg.cc/5Yh9D4JB) - Доступность web-сервиса в днс consul</p></li>
+<li><p>[![2023-03-11-10-15-39.png](https://i.postimg.cc/Gt54kRWh/2023-03-11-10-15-39.png)](https://postimg.cc/p5KVHwVg) - Отключпение одной службы nginx<p></li>
+<li><p>[![2023-03-11-10-18-51.png](https://i.postimg.cc/0QZMyDZS/2023-03-11-10-18-51.png)](https://postimg.cc/1nn5WgkR) - Возврат в исходное состояние одной службы nginx<p></li>
 </ul>
 <hr>
 <p><i><b>Примечание. </b></i>Для полного усвоения материала нужно настроить какую-то рабочую конфигурацию</p>
