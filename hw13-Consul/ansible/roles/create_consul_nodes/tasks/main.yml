@@ -1,0 +1,79 @@
+root@ubu2210-ansiblehost:/etc/ansible/roles/create_consul_nodes/tasks# cat main.yml
+---
+#- name: download consul
+#  ansible.builtin.get_url:
+#    url: https://releases.hashicorp.com/consul/1.15.0/consul_1.15.0_freebsd_amd64.zip
+#    dest: /home/vagrant/consul_1.15.0_freebsd_amd64.zip
+#- name: sudo без ввода пароля
+#  ansible.builtin.copy:
+#    src: templates/ubuntu
+#    dest: /etc/sudoers.d/ubuntu
+#    remote_src: yes
+- name: install mc, dnsutils, vim
+  ansible.builtin.apt:
+    name:
+      - mc
+      - dnsutils
+      - vim
+      - curl
+    state: present
+    update_cache: true
+
+- name: unzip consul
+  ansible.builtin.unarchive:
+    src: /home/vagrant/consul_1.15.1_linux_amd64.zip
+    dest: /usr/local/bin
+#    remote_src: yes
+
+- name: add the user 'consul'
+  ansible.builtin.user:
+    name: consul
+    comment: Consul DCS service
+#    group: consul
+    create_home: no
+    system: yes
+
+- name: add work directory of consul
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: consul
+    group: consul
+    mode: 0775
+
+  with_items:
+    - /var/lib/consul
+    - /etc/consul.d
+
+#- name: put hosts config file in /etc/h
+#  ansible.builtin.template:
+#    src=templates/config.json
+#    dest=/etc/cinsul.d/config.json
+
+- name: add consul_name_ip to /etc/hosts
+  blockinfile:
+    path: /etc/hosts
+    block: |
+      {{ ip_consul_node01 }} {{ name_consul_node01 }}
+      {{ ip_consul_node02 }} {{ name_consul_node02 }}
+      {{ ip_consul_node03 }} {{ name_consul_node03 }}
+
+- name: put consul config file
+  ansible.builtin.template:
+    src=templates/config.json
+    dest=/etc/consul.d/config.json
+
+- name: put consul unit file
+  ansible.builtin.template:
+    src=templates/consul.service
+    dest=/etc/systemd/system/consul.service
+
+- name: systemd reload
+  ansible.builtin.systemd:
+    daemon_reload: yes
+
+- name: start unit of consul in systemd
+  ansible.builtin.systemd:
+    state: started
+    enabled: yes
+    name: consul.service
