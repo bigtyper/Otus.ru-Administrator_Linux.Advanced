@@ -1,0 +1,6 @@
+---
+- name: creates_consul_nodes
+  hosts: consulhost
+  roles:
+    - create_lxc_containers
+
