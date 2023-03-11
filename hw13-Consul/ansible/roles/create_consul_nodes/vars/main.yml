@@ -1,0 +1,7 @@
+ip_consul_node01 : "10.0.3.51"
+ip_consul_node02 : "10.0.3.52"
+ip_consul_node03 : "10.0.3.53"
+
+name_consul_node01 : "cons_node01"
+name_consul_node02 : "cons_node02"
+name_consul_node03 : "cons_node03"
