@@ -17,7 +17,7 @@ Consul</h3>
 <hr>
 <ul>
 <h4>Краткое описание вложенных файлов:</h4>
-<li><p></p></li>
+<li><p>vagrantfiles/consulVagrantfile - файлы конфигурации host машин</p></li>
 <li><p></p></li>
 <li><p></p></li>
 <li><p></p></li>
