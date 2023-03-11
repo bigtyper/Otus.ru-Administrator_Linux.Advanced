@@ -1,0 +1,70 @@
+root@ubu2210-ansiblehost:/etc/ansible/roles/create_lxc_containers/tasks# cat main.yml
+---
+#- name: Создание lxc
+#  tasks:
+- name: установка ПО
+  ansible.builtin.apt:
+    name:
+    - lxc
+    - lxctl
+    - lxc-templates
+    - bridge-utils
+    - python3-lxc
+    - vim
+    - mc
+    state: present
+
+- name: установка постоянных ip адресов
+  ansible.builtin.template:
+    src=templates/dnsmasq.conf
+    dest=/etc/lxc/dnsmasq.conf
+
+- name: сохраняем старый конфиг
+  ansible.builtin.copy:
+    src: /etc/default/lxc-net
+    dest: '/etc/default/lxc-net.{{ ansible_date_time.date }}.bak'
+    remote_src: yes
+
+- name: добавления файла кофигурации
+  ansible.builtin.template:
+    src=templates/lxc-net.conf
+    dest=/etc/default/lxc-net
+
+- name: создание контейнеров
+  community.general.lxc_container:
+    name: "{{item.lxc_hostname}}"
+    container_log: true
+    template: ubuntu
+    state: started
+    template_options: --release kinetic
+    config: "{{item.lxc_file_config}}"
+  loop:
+    - { lxc_hostname: cons-node01 , lxc_file_config: /etc/ansible/lxc-ubu01.conf }
+    - { lxc_hostname: cons-node02 , lxc_file_config: /etc/ansible/lxc-ubu02.conf }
+    - { lxc_hostname: cons-node03 , lxc_file_config: /etc/ansible/lxc-ubu03.conf }
+
+- name: рестарт lxc
+  ansible.builtin.service:
+    name: lxc.service
+    state: restarted
+
+- name: Update apt repo and cache on all Debian/Ubuntu boxes
+  apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+
+- name: Upgrade all packages on servers
+  apt: upgrade=dist force_apt_get=yes
+
+- name: Check if a reboot is needed on all servers
+  register: reboot_required_file
+  stat: path=/var/run/reboot-required get_md5=no
+
+- name: Reboot the box if kernel updated
+  reboot:
+    msg: "Reboot initiated by Ansible for kernel updates"
+    connect_timeout: 5
+    reboot_timeout: 300
+    pre_reboot_delay: 0
+    post_reboot_delay: 30
+    test_command: uptime
+  when: reboot_required_file.stat.exists
+
